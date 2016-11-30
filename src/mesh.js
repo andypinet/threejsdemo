@@ -1,0 +1,1 @@
+export class MyMesh extends THREE.Mesh {}

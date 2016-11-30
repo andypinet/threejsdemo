@@ -1,0 +1,24 @@
+{
+  "name": "threejsdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 6500",
+    "watch": "gulp watch-cmd-js --name index --srcdest '/src/' --dest '/build' --watch 'src/**/*.js' "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-es2017": "^6.16.0",
+    "babelify": "^7.3.0",
+    "debounce": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-param": "^1.0.3",
+    "gulp-rename": "^1.2.2"
+  }
+}

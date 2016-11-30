@@ -1,0 +1,1 @@
+export class MyCubeGeometry extends THREE.CubeGeometry {}

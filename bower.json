@@ -1,0 +1,28 @@
+{
+  "name": "threejsdemo",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "andypinet <lbc19920631@163.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "app-elements": "PolymerElements/app-elements",
+    "data-elements": "PolymerElements/data-elements",
+    "gold-elements": "PolymerElements/gold-elements",
+    "GoogleWebComponents": "GoogleWebComponents/google-web-components",
+    "iron-elements": "PolymerElements/iron-elements",
+    "layout-elements": "PolymerElements/layout-elements",
+    "molecules": "PolymerElements/molecules",
+    "paper-elements": "PolymerElements/paper-elements",
+    "platinum-elements": "PolymerElements/platinum-elements"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="bower_components/lodash/lodash.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/paper-slider/paper-slider.html">
+    <link rel="import" href="app.html">
+    <title>Document</title>
+    <style>
+        body{
+            /* 设置margin为0和overflow为hidden，从而可以铺面整个页面*/
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .m-t {
+            margin-top:15px;
+        }
+
+        .m-l {
+            margin-left:15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Div用来放置显示结果-->
+    <div id="WebGL-output">
+    </div>
+</body>
+    <script src="three.min.last.js"></script>
+    <script src="dat.gui.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="OrbitControls.js"></script>
+    <script src="build/index.js"></script>
+    <script>
+
+        function laihui(theta) {
+            return 1-Math.abs((theta%4)-2);
+        }
+
+        var mytrin = [];
+        var ti = 2.0 * Math.PI * (880 / 44100);
+        var theta = 0;
+        
+        for(i = 0; i <10000; i++){
+            mytrin.push(laihui(theta));
+            theta = theta + ti;
+        }
+        
+        console.dir(mytrin);
+    </script>
+</html>

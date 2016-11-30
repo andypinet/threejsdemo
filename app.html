@@ -1,0 +1,97 @@
+<dom-module id="my-app">
+    <style>
+        :host {
+            position: fixed;
+            right: 0;
+            top: 0;
+            background-color: rgba(255,255,255,0.3)
+        }
+    </style>
+    <template>
+        <div>
+            <paper-slider value="{{pesctive}}"></paper-slider>
+            <span class="m-l">fov: {{pesctive}}</span>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'my-app',
+            properties: {
+                pesctive: {
+                    type: Number,
+                    observer: '_pesctiveUpdate'
+                },
+                x: {
+                    type: Number,
+                    observer: '_xUpdate'
+                },
+                y: {
+                    type: Number,
+                    observer: '_yUpdate'
+                },
+                z: {
+                    type: Number,
+                    observer: '_zUpdate'
+                },
+                showx: {
+                    type: Number
+                }
+            },
+            ready: function() {
+                this.pesctive = 45;
+                this.x = this._handlePiValue("x", -60);
+                this.y = this._handlePiValue("y", 0);
+                this.z = this._handlePiValue("z", -45);
+                this.showx = -60;
+                this.showy = 0;
+                this.showz = -45;
+                this.isReady = true;
+            },
+            _commonHandleValue: function (key, newvalue, oldvalue) {
+                if (newvalue < 1) {
+                    newvalue = 1;
+                }
+                if (window.setCamera) {
+                    window.setCamera({
+                        fov: newvalue
+                    });
+                    window.renderThree();
+                }
+            },
+            _handlePiValue: function (key, value) {
+                return value * (Math.PI / 180);
+            },
+            _pesctiveUpdate: function (newvalue, oldvalue) {
+                this._commonHandleValue("fov", newvalue, oldvalue);
+            },
+            _positionSetValue: function (key, newvalue, oldvalue) {
+                var self = this;
+                var position = {
+                    x: self.x,
+                    y: self.y,
+                    z: self.z
+                };
+                position[key] = newvalue;
+                window.setRotation.apply(null, _.toArray(position));
+            },
+            _xUpdate: function (newvalue, oldvalue) {
+                if (this.isReady && typeof oldvalue != "undefined") {
+                    this.showx = newvalue;
+                    this._positionSetValue("x", this._handlePiValue("x", newvalue), oldvalue);
+                }
+            },
+            _yUpdate: function (newvalue, oldvalue) {
+                if (this.isReady && typeof oldvalue != "undefined") {
+                    this.showy = newvalue;
+                    this._positionSetValue("y", this._handlePiValue("y", newvalue), oldvalue);
+                }
+            },
+            _zUpdate: function (newvalue, oldvalue) {
+                if (this.isReady && typeof oldvalue != "undefined") {
+                    this.showz = newvalue;
+                    this._positionSetValue("z", this._handlePiValue("z", newvalue), oldvalue);
+                }
+            }
+        });
+    </script>
+</dom-module>

@@ -1,0 +1,1 @@
+export class MyObject3d extends THREE.Object3D {}
